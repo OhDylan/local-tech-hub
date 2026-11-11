@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Local Tech Hub Report</title>
+<style>
+:root{
+  --ink:#1b1f24; --muted:#5b6470; --line:#d9dee5; --bg:#ffffff; --soft:#f4f6f9;
+  --accent:#6a3fd1; --accent-soft:#efe9fc;
+  --teal:#0f7c86; --teal-soft:#e2f3f4;
+  --green:#1f8a4c; --green-soft:#e6f4ec;
+  --amber:#b7791f; --amber-soft:#fbf1df;
+  --red:#c0392b; --red-soft:#fbe7e5;
+  --blue:#2f5bd3; --blue-soft:#e8eefc;
+}
+@page{ size:A4; margin:14mm; }
+*{ box-sizing:border-box; }
+body{ font-family:"Inter","WenQuanYi Zen Hei",system-ui,sans-serif; color:var(--ink); background:var(--bg); font-size:9.5pt; line-height:1.42; margin:0; }
+h1{ font-size:22pt; margin:0; letter-spacing:-0.4px; }
+h2{ font-size:13.5pt; margin:14px 0 6px; padding-bottom:3px; border-bottom:2px solid var(--accent); }
+h3{ font-size:10.6pt; margin:10px 0 4px; }
+p{ margin:4px 0 6px; }
+.sub{ color:var(--muted); font-size:9pt; }
+.page{ page-break-after:always; }
+.page:last-child{ page-break-after:auto; }
+table{ width:100%; border-collapse:collapse; margin:5px 0 8px; font-size:8.5pt; }
+th,td{ border:1px solid var(--line); padding:3.5px 6px; vertical-align:top; text-align:left; }
+th{ background:var(--soft); font-weight:600; }
+tr{ page-break-inside:avoid; }
+code{ font-family:"DejaVu Sans Mono",monospace; font-size:7.8pt; background:var(--soft); padding:0 3px; border-radius:3px; }
+pre{ font-family:"DejaVu Sans Mono",monospace; font-size:7.6pt; background:var(--soft); padding:6px 9px; border-radius:6px; white-space:pre-wrap; margin:4px 0 6px; }
+.plain{ background:var(--accent-soft); border-left:4px solid var(--accent); padding:6px 10px; border-radius:4px; margin:6px 0 8px; font-size:9pt; }
+.plain b:first-child{ color:var(--accent); }
+.note{ font-size:8.2pt; color:var(--muted); }
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; }
+svg{ display:block; width:100%; height:auto; }
+svg text{ font-family:"Inter",sans-serif; }
+ul,ol{ margin:3px 0 6px 16px; padding:0; } li{ margin:1px 0; }
+.tldr td:first-child{ width:21%; font-weight:600; background:var(--soft); }
+.tag{ display:inline-block; font-size:7.4pt; font-weight:700; padding:0 6px; border-radius:8px; white-space:nowrap; }
+.t-ok{ background:var(--green-soft); color:var(--green);} .t-2nd{ background:var(--amber-soft); color:var(--amber);} .t-me{ background:var(--blue-soft); color:var(--blue);}
+.v-must{ background:var(--green-soft); color:var(--green);} .v-maybe{ background:var(--amber-soft); color:var(--amber);} .v-cool{ background:var(--accent-soft); color:var(--accent);}
+.tw-y{ background:var(--teal-soft); color:var(--teal);} .tw-p{ background:var(--soft); color:var(--muted);} .tw-n{ background:var(--red-soft); color:var(--red);}
+.card{ border:1px solid var(--line); border-radius:8px; padding:7px 10px 6px; margin:0 0 8px; page-break-inside:avoid; }
+.card h3{ margin:0 0 2px; font-size:10.6pt; display:flex; justify-content:space-between; align-items:baseline; gap:6px; }
+.card .src{ font-size:7.8pt; color:var(--muted); margin-bottom:3px; }
+.card dl{ display:grid; grid-template-columns:78px 1fr; gap:2px 8px; margin:0; font-size:8.5pt; }
+.card dt{ font-weight:700; color:var(--muted); font-size:7.8pt; text-transform:uppercase; letter-spacing:.3px; padding-top:1px; }
+.card dd{ margin:0; }
+.card .foot{ display:flex; gap:6px; flex-wrap:wrap; margin-top:4px; align-items:center; font-size:8.2pt; }
+.hero{ background:linear-gradient(135deg,#efe9fc 0%,#e2f3f4 100%); border-radius:12px; padding:14px 16px 12px; margin-bottom:8px; }
+.hero .kicker{ font-size:8.5pt; font-weight:700; color:var(--accent); letter-spacing:1px; text-transform:uppercase; }
+.zh{ font-family:"WenQuanYi Zen Hei",sans-serif; }
+.script{ border:1px solid var(--line); border-radius:8px; padding:7px 10px; font-size:8.6pt; }
+.script p{ margin:2px 0; }
+.foottxt{ font-size:7.6pt; color:var(--muted); margin-top:5px; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: COVER + SUMMARY ================= -->
+<section class="page">
+  <div class="hero">
+    <div class="kicker">Content &amp; research report · 11 Nov 2026</div>
+    <h1>Local Tech Hub</h1>
+    <div class="sub" style="font-size:10.5pt;color:#3b4250">I get my keys in 2028. Until then I research, simulate and document how a software engineer would turn a home into a lab, one short video at a time.</div>
+  </div>
+
+  <table class="tldr">
+    <tr><td>The idea</td><td>Research other people's smart-home projects, take them apart, build a <b>digital twin</b> of my future home and "live" in it, so that by 2028 I know exactly what I need and why.</td></tr>
+    <tr><td>The format</td><td>Faceless short videos (~60–90 s) + a <b>public notebook</b> (this GitHub repo). The video is the trailer; the notebook holds the technical depth.</td></tr>
+    <tr><td>The angle</td><td>Most smart-home content I've seen shows <i>that</i> something is cool. I show <i>how it works</i>: one diagram, one clever trick, one catch. <span class="note">(This is my impression; §8 has a 30-minute check.)</span></td></tr>
+    <tr><td>Ready to film</td><td>Episode 1 script (EN + 中文) + <b>12 verified project dissections</b> for Season 1.</td></tr>
+    <tr><td>Pace</td><td>About 3–5 hours per episode, so <b>1 episode a week</b> next to a full-time job. Seasons give natural breaks.</td></tr>
+  </table>
+
+  <h3>The flywheel</h3>
+  <svg viewBox="0 0 760 158" aria-label="Flywheel">
+    <defs><marker id="f1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b6470"/></marker></defs>
+    <rect x="10" y="50" width="130" height="54" rx="10" fill="#fff" stroke="#1b1f24"/><text x="75" y="73" font-size="12" font-weight="700" text-anchor="middle">Research</text><text x="75" y="90" font-size="9.5" text-anchor="middle" fill="#5b6470">find a project</text>
+    <rect x="190" y="50" width="150" height="54" rx="10" fill="#efe9fc" stroke="#6a3fd1"/><text x="265" y="73" font-size="12" font-weight="700" text-anchor="middle" fill="#6a3fd1">Notebook card</text><text x="265" y="90" font-size="9.5" text-anchor="middle" fill="#5b6470">GitHub · full depth</text>
+    <rect x="390" y="50" width="150" height="54" rx="10" fill="#fff" stroke="#1b1f24"/><text x="465" y="73" font-size="12" font-weight="700" text-anchor="middle">70-s video</text><text x="465" y="90" font-size="9.5" text-anchor="middle" fill="#5b6470">hook · diagram · trick · catch</text>
+    <rect x="590" y="50" width="160" height="54" rx="10" fill="#fff" stroke="#1b1f24"/><text x="670" y="73" font-size="12" font-weight="700" text-anchor="middle">Audience</text><text x="670" y="90" font-size="9.5" text-anchor="middle" fill="#5b6470">questions · tips · new leads</text>
+    <rect x="300" y="4" width="160" height="34" rx="10" fill="#e2f3f4" stroke="#0f7c86"/><text x="380" y="26" font-size="11" font-weight="700" text-anchor="middle" fill="#0f7c86">Digital twin: try it</text>
+    <line x1="140" y1="77" x2="188" y2="77" stroke="#5b6470" stroke-width="1.6" marker-end="url(#f1)"/>
+    <line x1="340" y1="77" x2="388" y2="77" stroke="#5b6470" stroke-width="1.6" marker-end="url(#f1)"/>
+    <line x1="540" y1="77" x2="588" y2="77" stroke="#5b6470" stroke-width="1.6" marker-end="url(#f1)"/>
+    <line x1="290" y1="50" x2="320" y2="40" stroke="#5b6470" stroke-width="1.4" marker-end="url(#f1)"/>
+    <line x1="440" y1="40" x2="458" y2="50" stroke="#5b6470" stroke-width="1.4" marker-end="url(#f1)"/>
+    <path d="M670,104 C670,140 75,140 75,106" fill="none" stroke="#5b6470" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#f1)"/>
+    <text x="380" y="153" font-size="9" fill="#5b6470" text-anchor="middle">viewers suggest the next project to dissect</text>
+  </svg>
+
+  <h3>The arc</h3>
+  <div class="grid3" style="grid-template-columns:repeat(6,1fr);gap:5px">
+    <div class="card" style="padding:5px 7px"><b style="color:#6a3fd1">S0</b><br><span class="note">The dream</span></div>
+    <div class="card" style="padding:5px 7px"><b style="color:#6a3fd1">S1</b><br><span class="note">Field Notes: weekly dissections</span></div>
+    <div class="card" style="padding:5px 7px"><b style="color:#0f7c86">S2</b><br><span class="note">Digital twin: live in it</span></div>
+    <div class="card" style="padding:5px 7px"><b style="color:#2f5bd3">S3</b><br><span class="note">My own agent</span></div>
+    <div class="card" style="padding:5px 7px"><b style="color:#b7791f">S4</b><br><span class="note">USB-powered bench lab</span></div>
+    <div class="card" style="padding:5px 7px"><b style="color:#1f8a4c">S5</b><br><span class="note">Move-in 2028: twin vs reality</span></div>
+  </div>
+  <p class="note">Labels used throughout: <span class="tag t-ok">✓ verified</span> from the project's README/official docs on 11 Nov 2026 · <span class="tag t-2nd">second-hand</span> forum/Reddit summary · <span class="tag t-me">my view</span> suggestion or opinion. These projects change fast, so re-check before filming.</p>
+</section>
+
+<!-- ================= PAGE 2: ARC ================= -->
+<section class="page">
+  <h2>1–2 · The concept and the long arc: Nov 2026 → keys in 2028</h2>
+  <div class="plain"><b>In plain words:</b> Season 1 (dissections) runs the whole time as the backbone. The other seasons stack on top as the ideas pile up: first simulate, then build, then move in. The dates are indicative.</div>
+  <svg viewBox="0 0 760 210" aria-label="Roadmap">
+    <!-- x scale: Nov26=60, each month 26px  (Nov26..Jul28 = 20 months -> 60..580) -->
+    <g font-size="8.5" fill="#5b6470" text-anchor="middle">
+      <text x="60" y="200">Nov 26</text><text x="138" y="200">Feb 27</text><text x="216" y="200">May 27</text><text x="294" y="200">Aug 27</text><text x="372" y="200">Nov 27</text><text x="450" y="200">Feb 28</text><text x="528" y="200">May 28</text>
+    </g>
+    <line x1="60" y1="186" x2="700" y2="186" stroke="#c9d0da" stroke-width="1.5"/>
+    <g font-size="9.5" font-weight="700">
+      <rect x="60" y="10" width="26" height="22" rx="5" fill="#efe9fc" stroke="#6a3fd1"/><text x="92" y="25" fill="#6a3fd1">S0 The dream</text>
+      <rect x="86" y="40" width="468" height="22" rx="5" fill="#efe9fc" stroke="#6a3fd1"/><text x="94" y="55" fill="#6a3fd1">S1 Field Notes: one dissection a week (backbone)</text>
+      <rect x="138" y="70" width="156" height="22" rx="5" fill="#e2f3f4" stroke="#0f7c86"/><text x="146" y="85" fill="#0f7c86">S2 Digital twin</text>
+      <rect x="242" y="100" width="104" height="22" rx="5" fill="#e8eefc" stroke="#2f5bd3"/><text x="250" y="115" fill="#2f5bd3">S3 My own agent</text>
+      <rect x="320" y="130" width="156" height="22" rx="5" fill="#fbf1df" stroke="#b7791f"/><text x="328" y="145" fill="#b7791f">S4 Bench lab</text>
+      <rect x="424" y="160" width="276" height="22" rx="5" fill="#e6f4ec" stroke="#1f8a4c"/><text x="432" y="175" fill="#1f8a4c">S5 Move-in: twin vs reality (from key handover)</text>
+    </g>
+    <polygon points="490,141 496,147 490,153 484,147" fill="#1f8a4c"/><text x="500" y="151" font-size="8.5" font-weight="700" fill="#1f8a4c">keys in 2028 (date TBC)</text>
+  </svg>
+  <table>
+    <tr><th style="width:15%">Season</th><th style="width:31%">What happens</th><th style="width:30%">Example episode</th><th>Notes</th></tr>
+    <tr><td><b>S0 The dream</b></td><td>Who I am, the 2028 keys, why a "tech hub", why I'm sharing it</td><td>"In 2028 I get my keys. Until then, I'm building my home in software."</td><td>1–2 episodes. Script on page 11.</td></tr>
+    <tr><td><b>S1 Field Notes</b></td><td>Weekly dissection of someone else's project</td><td>"A house run by five AI characters: how it actually works"</td><td>Runs alongside everything else. 12 starter cards on pages 4–8.</td></tr>
+    <tr><td><b>S2 Digital twin</b></td><td>Build the twin, then live in it</td><td>"Day 1 living in a home that doesn't exist"</td><td>Start after 6–8 dissections give ideas to test.</td></tr>
+    <tr><td><b>S3 My own agent</b></td><td>The existing Phase 1 agent plan, as a season, running on the twin</td><td>"Why my AI isn't allowed to unlock my door"</td><td>The plan's Dec 2026 dates may move; your call.</td></tr>
+    <tr><td><b>S4 Bench lab</b></td><td>Low-voltage, USB-powered gadgets on a desk</td><td>"My first real device cost ~$15 and needs no electrician"</td><td>Hardware, but no mains electrical work.</td></tr>
+    <tr><td><b>S5 Move-in</b></td><td>Real devices; twin predictions vs reality</td><td>"What the simulation got wrong"</td><td>Depends on the handover date.</td></tr>
+  </table>
+
+  <h3>Why the notebook matters</h3>
+  <ul>
+    <li><b>It solves the "deep vs 70 seconds" problem.</b> A video fits one diagram and one trick; the notebook card holds every detail, link and caveat.</li>
+    <li><b>It's the thread through every episode:</b> each one ends with "filed in my notebook as <span class="tag v-must">Must-have</span> / <span class="tag v-maybe">Maybe</span> / <span class="tag v-cool">Just cool</span>".</li>
+    <li><b>It compounds.</b> After a year it's a searchable, public knowledge base, and the evidence behind my 2028 decisions.</li>
+    <li><b>My AI assistant can help:</b> the Markdown version of this report has a card template and a research prompt (§11).</li>
+  </ul>
+</section>
+
+<!-- ================= PAGE 3: FORMATS ================= -->
+<section class="page">
+  <h2>3 · Episode formats (all faceless)</h2>
+  <h3>Format A: Dissection (the Season 1 workhorse), about 70–90 seconds</h3>
+  <svg viewBox="0 0 760 114" aria-label="Format A timeline">
+    <g font-size="9.5" font-weight="700" text-anchor="middle">
+      <rect x="10" y="10" width="28" height="44" rx="5" fill="#6a3fd1"/><text x="24" y="37" fill="#fff" font-size="8.5">Hook</text>
+      <rect x="40" y="10" width="100" height="44" rx="5" fill="#efe9fc" stroke="#6a3fd1"/><text x="90" y="30" fill="#6a3fd1">What it does</text><text x="90" y="45" font-size="8" font-weight="400" fill="#5b6470">one sentence</text>
+      <rect x="142" y="10" width="250" height="44" rx="5" fill="#e2f3f4" stroke="#0f7c86"/><text x="267" y="30" fill="#0f7c86">How it works</text><text x="267" y="45" font-size="8" font-weight="400" fill="#5b6470">one diagram, 3–5 boxes (my own drawing)</text>
+      <rect x="394" y="10" width="125" height="44" rx="5" fill="#e6f4ec" stroke="#1f8a4c"/><text x="456" y="30" fill="#1f8a4c">The clever trick</text><text x="456" y="45" font-size="8" font-weight="400" fill="#5b6470">zoom on one snippet</text>
+      <rect x="521" y="10" width="115" height="44" rx="5" fill="#fbe7e5" stroke="#c0392b"/><text x="578" y="30" fill="#c0392b">The catch</text><text x="578" y="45" font-size="8" font-weight="400" fill="#5b6470">cost · hardware · maturity</text>
+      <rect x="638" y="10" width="112" height="44" rx="5" fill="#fbf1df" stroke="#b7791f"/><text x="694" y="30" fill="#b7791f">Notebook verdict</text><text x="694" y="45" font-size="8" font-weight="400" fill="#5b6470">for <tspan font-style="italic">my</tspan> home</text>
+    </g>
+    <g font-size="8.5" fill="#5b6470" text-anchor="middle">
+      <text x="10" y="70">0 s</text><text x="40" y="70">3</text><text x="142" y="70">15</text><text x="394" y="70">45</text><text x="521" y="70">60</text><text x="638" y="70">75</text><text x="748" y="70">90 s</text>
+    </g>
+    <text x="10" y="92" font-size="9" fill="#5b6470">Example hook: "This house argues with its owner about bedtime." Then: what it does → the diagram →</text><text x="10" y="106" font-size="9" fill="#5b6470">the one idea worth stealing → what it costs → Must-have / Maybe / Just cool.</text>
+  </svg>
+
+  <div class="grid3">
+    <div class="card"><h3>Format B · Build log</h3><div class="note">S2–S4. "I tried X → it broke at Y → here's the fix." Screen recording + voiceover. Showing failures makes it more credible.</div></div>
+    <div class="card"><h3>Format C · Day in the twin</h3><div class="note">S2. A time-lapse of a simulated day in the 3D model, with captions like "08:30: I wished the house told me it's going to rain."</div></div>
+    <div class="card"><h3>Format D · Myth vs reality</h3><div class="note">Any time. "Can AI really learn your habits?" Answer it with what's verified today, not hype.</div></div>
+  </div>
+
+  <h3>Production checklist (every episode)</h3>
+  <table>
+    <tr><td style="width:4%">☐</td><td>Credit the creator by name and link the repo or post (in the video and the description).</td></tr>
+    <tr><td>☐</td><td>Date-stamp facts ("as of Nov 2026"), especially versions, prices and model names.</td></tr>
+    <tr><td>☐</td><td>Say clearly when I haven't tested something ("I haven't run this yet; this is from the README").</td></tr>
+    <tr><td>☐</td><td>Use my own diagrams and reproductions; ask before reusing someone's screenshots or video.</td></tr>
+    <tr><td>☐</td><td>Never show tokens, IP addresses, my address or my real floor plan.</td></tr>
+    <tr><td>☐</td><td>Link the notebook card for the full technical breakdown.</td></tr>
+  </table>
+
+  <h3>Example: what a "How it works" diagram looks like (from card 4.2, ZenOS-AI)</h3>
+  <svg viewBox="0 0 760 92" aria-label="ZenOS pipeline">
+    <defs><marker id="z1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b6470"/></marker></defs>
+    <g font-size="10" text-anchor="middle">
+      <rect x="6" y="20" width="118" height="50" rx="8" fill="#fff" stroke="#1b1f24"/><text x="65" y="41" font-weight="700">500 sensors</text><text x="65" y="57" font-size="8.5" fill="#5b6470">security, water, energy…</text>
+      <rect x="150" y="20" width="130" height="50" rx="8" fill="#e2f3f4" stroke="#0f7c86"/><text x="215" y="41" font-weight="700" fill="#0f7c86">Summariser</text><text x="215" y="57" font-size="8.5" fill="#5b6470">one per subsystem</text>
+      <rect x="306" y="20" width="110" height="50" rx="8" fill="#fff" stroke="#1b1f24"/><text x="361" y="41" font-weight="700">"Katas"</text><text x="361" y="57" font-size="8.5" fill="#5b6470">short summaries</text>
+      <rect x="442" y="20" width="130" height="50" rx="8" fill="#e2f3f4" stroke="#0f7c86"/><text x="507" y="41" font-weight="700" fill="#0f7c86">SuperSummary</text><text x="507" y="57" font-size="8.5" fill="#5b6470">combines all Katas</text>
+      <rect x="598" y="20" width="156" height="50" rx="8" fill="#efe9fc" stroke="#6a3fd1"/><text x="676" y="41" font-weight="700" fill="#6a3fd1">Friday (the agent)</text><text x="676" y="57" font-size="8.5" fill="#5b6470">reads summaries, not raw data</text>
+    </g>
+    <line x1="124" y1="45" x2="148" y2="45" stroke="#5b6470" stroke-width="1.6" marker-end="url(#z1)"/>
+    <line x1="280" y1="45" x2="304" y2="45" stroke="#5b6470" stroke-width="1.6" marker-end="url(#z1)"/>
+    <line x1="416" y1="45" x2="440" y2="45" stroke="#5b6470" stroke-width="1.6" marker-end="url(#z1)"/>
+    <line x1="572" y1="45" x2="596" y2="45" stroke="#5b6470" stroke-width="1.6" marker-end="url(#z1)"/>
+    <text x="215" y="88" font-size="8.5" fill="#c0392b" text-anchor="middle">runs several times an hour, so use a local model, not a paid API</text>
+  </svg>
+</section>
+
+<!-- ================= PAGES 4-8: DOSSIER ================= -->
+<section class="page">
+  <h2>4 · Project dossier: Season 1 candidates</h2>
+  <div class="plain"><b>How to read a card:</b> every card answers the same questions, so scripting is fast. <span class="tag tw-y">Twin: yes</span> means I can reproduce it before I have keys. The verdict is my draft and changes once I try the project.</div>
+
+  <div class="card">
+    <h3><span>4.1 Project Fronkensteen: five AI personas run a house</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">github.com/mmadalone/Project_Fronkensteen · HA community post "Five AI Personas Run My House from a RPi 5"</div>
+    <dl>
+      <dt>What</dt><dd>Five character personas, each with its own conversation agent, voice and time-of-day mood, run a house from a <b>Raspberry Pi 5</b>. They "argue with you about bedtime" and route notifications to the room you're in.</dd>
+      <dt>How</dt><dd>~38 <b>pyscript</b> Python modules (168 services) are the engine; about 80 automation and 35 script blueprints are the features; 22 Assist voice pipelines. The LLM is <i>Extended OpenAI Conversation</i> → <b>Llama 4 Maverick via OpenRouter</b>, with <b>ElevenLabs</b> voices. A <b>7-priority dispatcher</b> picks which persona answers. A <b>3-layer context</b> is built before every reply: L1 "hot" (time, presence, media), L2 "warm" (<b>SQLite + FTS5 + sqlite-vec</b> memory), L3 "cold" (Google Calendar, Gmail, forecasts). Aqara FP2 mmWave zones + Wi-Fi tracking tell <i>who</i> is in <i>which</i> room.</dd>
+      <dt>Trick</dt><dd><b>Email safety:</b> email is attacker-controlled text reaching an agent that can call tools, so it reads <b>subjects only</b> by default, and a body needs an explicit follow-up. A real prompt-injection defense.</dd>
+      <dt>Catch</dt><dd>Huge scope. The author says it's in "early stages of testing" and that it has "zero lines of hand-written YAML; all code generated by Claude". It relies on paid cloud services (it tracks the budget per agent).</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-p">Twin: partly</span><span class="tag v-cool">Just cool → steal 2 ideas</span><span class="note">Video: "A house run by five AI characters, and the one security trick worth stealing."</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span>4.2 ZenOS-AI ("Friday's Party"): an AI that summarises your whole house</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">github.com/nathan-curtis/zenos-ai · stable 2026.10.2 "Tron" · HA community thread "Friday's Party"</div>
+    <dl>
+      <dt>What</dt><dd>An HA-native framework for a private, context-aware assistant with a team of personas (Friday plus others), built entirely from <b>HA Packages</b> and scripts. No separate server.</dd>
+      <dt>How</dt><dd>Memory = <b>"Cabinets" with "Drawers"</b>: typed, described slots inside HA, garbage-collected every 15 minutes. Each subsystem (security, water, energy…) is a component; a <b>summariser per component</b> writes a "Kata", and a <b>SuperSummary</b> combines them for Friday (diagram on page 3). Since 2026.9.0, permission grants for <b>locks, alarm and covers need a real push to a real phone</b>.</dd>
+      <dt>Trick</dt><dd><b>Pre-digest the house.</b> The agent reads small, continuously refreshed summaries instead of hundreds of raw sensors. A new subsystem is a drawer plus a label, with no code changes.</dd>
+      <dt>Catch</dt><dd>The README warns: <b>don't point the background summariser at a paid API</b>, because it runs several times an hour and "will generate a significant and continuous bill". Needs a tool-calling model; very small models aren't recommended.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-y">Twin: yes (local model)</span><span class="tag v-maybe">Maybe</span><span class="note">Video: "This AI reads my whole house every few minutes, and why that would bankrupt me on a cloud API."</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span>4.3 Guest assistant: "Where are the towels?"</span><span class="tag t-2nd">second-hand</span></h3>
+    <div class="src">r/homeassistant "Using LLMs to make a guest assistant" (Jan 2025). Read via summaries; the original wasn't reachable.</div>
+    <dl>
+      <dt>What</dt><dd>Guests ask the house where things are when the owners aren't around.</dd>
+      <dt>How</dt><dd>An HA <b>script</b> with a <code>question</code> field calls <code>conversation.process</code> on an LLM whose prompt lists items by room; a <b><code>stop</code> action returns the answer</b> to the voice assistant that called it.</dd>
+      <dt>Trick</dt><dd><b>An LLM as a tool of another assistant.</b> The main assistant hands one narrow question to a specialist prompt.</dd>
+      <dt>Catch</dt><dd>A commenter noted it's slow, because one question can trigger several model calls. The item list goes stale unless someone maintains it.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-y">Twin: yes, easily</span><span class="tag v-must">Must-have</span><span class="note">Video: "My house is the best house-sitter: ask it where anything is."</span></div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="card">
+    <h3><span>4.4 Home Generative Agent: a real agent, not a pass-through</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">github.com/goruck/home-generative-agent · requires HA 2026.8+</div>
+    <dl>
+      <dt>What</dt><dd>Conversation, <b>automations written from plain English and registered in HA</b>, camera analysis, proactive alerts and long-term memory.</dd>
+      <dt>How</dt><dd>Built on <b>LangGraph</b>. Memory is semantic search over past conversations, stored in <b>PostgreSQL + pgvector</b>. "<b>Sentinel</b>" uses <i>deterministic rules</i> (not the LLM) for safety alerts such as unlocked locks and open entries. Works with OpenAI, Gemini, Anthropic or local models.</dd>
+      <dt>Trick</dt><dd>A <b>Critical Action PIN</b>: an AI-written automation that would unlock a door needs a PIN. Plus the clear split: rules for safety, LLM for language.</dd>
+      <dt>Catch</dt><dd>Its bundled Postgres app needs <b>HA OS or Supervised</b>; on HA Container (my setup) I'd run my own Postgres. It only sees entities exposed to Assist, and HA auto-exposes only certain domains (lights, switches, covers, climate, media players… plus door/lock/motion binary sensors). Everything else must be exposed by hand.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-y">Twin: yes (chat, automations, memory)</span><span class="tag v-maybe">Maybe</span><span class="note">Video: "Most 'AI home assistants' just forward your words to a chatbot. This one is a real agent."</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span>4.5 LLM Vision: let the house <i>see</i></span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">github.com/valentinfrlch/ha-llmvision · llmvision.org</div>
+    <dl>
+      <dt>What</dt><dd>Sends images, video, live feeds or Frigate events to a multimodal model, and turns the answer into text, sensor values, or a <b>timeline of events</b> on the dashboard. It "remembers people, pets and objects".</dd>
+      <dt>How</dt><dd>An HA integration with pluggable providers (OpenAI, Anthropic, Gemini, OpenRouter, AWS Bedrock, Azure, Groq, Ollama, LocalAI, Open WebUI…). A ready-made <b>blueprint</b> turns camera events into AI-summarised notifications.</dd>
+      <dt>Trick</dt><dd>"Motion detected" becomes "a courier left a parcel".</dd>
+      <dt>Catch</dt><dd>Images go to whichever provider you choose (privacy trade-off; local models are possible). HA Container needs a <code>/media</code> mount. It's community code: in 2026.11 it installs from the new Marketplace, which HA says is "not tested, audited, or supported" by the HA project.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-y">Twin: yes (virtual camera)</span><span class="tag v-must">Must-have in 2028</span><span class="note">Video: "My doorbell doesn't say 'motion' any more. It says <i>who</i>."</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span>4.6 Lookout: cameras as a hyper-local weather station</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">github.com/wgumaa/Lookout · built on LLM Vision · HA 2025.7+</div>
+    <dl>
+      <dt>What</dt><dd>Reads <i>your own</i> outdoor cameras to estimate cloud cover, fog/haze, rain and whether the sun is visible, then exposes them as HA sensors.</dd>
+      <dt>How</dt><dd><b>All cameras in one LLM call</b> per poll (every 1–30 min); <b>polls only in daylight</b>; a confidence score per camera. The AI is only an <b>observer</b> and never controls devices.</dd>
+      <dt>Trick</dt><dd><b>Prompt design as engineering:</b> fog is tracked separately from cloud, rain only counts when it's actually visible, and water on the lens isn't mistaken for rain. The "Effective Sky Obstruction" output is meant to drive automatic blinds.</dd>
+      <dt>Catch</dt><dd>Needs a camera that sees the sky. The README notes some OpenAI models struggled to combine images with enforced structured output, and that older Gemini Flash models were retired.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-p">Twin: partly (sky photos)</span><span class="tag v-cool">Just cool (great teaching example)</span><span class="note">Video: "My weather forecast comes from my own window."</span></div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="card">
+    <h3><span>4.7 AI Tasks: turn any camera into a sensor (official HA)</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">HA blog "Building the AI-powered local smart home" (11 Sep 2025) · AI Tasks since HA 2025.8</div>
+    <dl>
+      <dt>What</dt><dd>Lets any automation or template ask an AI for <b>structured data</b> (a number, yes/no, JSON), optionally with an image attached.</dd>
+      <dt>How</dt><dd>The official example is a template sensor that runs <b>every 5 minutes</b> and calls <code>ai_task.generate_data</code> with "How many birds are inside the coop?", requires the answer to be a <b>number</b>, and attaches the camera image. The result is a normal HA sensor. The blog also cites community builds such as parking-spot detection and counting chickens.</dd>
+      <dt>Trick</dt><dd><b>AI output forced into a schema</b>, so ordinary automations can use it.</dd>
+      <dt>Catch</dt><dd>Every 5 minutes is about <b>288 model calls a day per sensor</b>, so cost and privacy depend on how often it polls.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-y">Twin: yes</span><span class="tag v-must">Must-have building block</span><span class="note">Video: "15 lines of YAML turn a camera into a 'how many…' sensor."</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span>4.8 The house starts the conversation (official HA)</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">HA 2025.7 release notes · HA AI blog (Sep 2025)</div>
+    <dl>
+      <dt>What</dt><dd>An automation makes a voice satellite <b>ask you a question</b> and act on the answer: garage open → "Close it?" → "Yes" → closes.</dd>
+      <dt>How</dt><dd>The <code>assist_satellite.ask_question</code> action plus an official <b>yes/no blueprint</b>. The blog notes that this also works without an LLM.</dd>
+      <dt>Trick</dt><dd><b>Proactive, but with confirmation:</b> the house suggests and the human decides.</dd>
+      <dt>Catch</dt><dd>Needs a voice satellite (e.g., HA Voice Preview Edition).</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-p">Twin: as phone notification</span><span class="tag v-must">Must-have pattern</span><span class="note">Video: "My house asks <i>me</i> questions now."</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span>4.9 AI Automation Suggester: AI proposes, I decide</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">github.com/ITSpecialist111/ai_automation_suggester · (HA also has a built-in Suggest button since 2025.8 that names and labels automations)</div>
+    <dl>
+      <dt>What</dt><dd>Looks at your entities, areas and automations, then proposes <b>new automations as YAML</b>.</dd>
+      <dt>How</dt><dd>Snapshot of the setup → prompt → your chosen provider (OpenAI, Anthropic, Ollama…). It <b>never creates automations itself</b>. Scope filters by domain/area/entity; runs on demand, on new entities, or weekly.</dd>
+      <dt>Trick</dt><dd><b>Human-in-the-loop by design.</b> It's useful exactly because it can't change anything.</dd>
+      <dt>Catch</dt><dd>A cloud provider sees your entity list. Quality depends on the model and on how complete the snapshot is.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-y">Twin: yes, ideal</span><span class="tag v-maybe">Maybe</span><span class="note">Video: "I let AI design the automations for a home I don't own yet."</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span>4.10 HA Text AI: the LLM as a function call in automations</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">github.com/smkrv/ha-text-ai · HA 2024.12+</div>
+    <dl>
+      <dt>What</dt><dd>Ask OpenAI, Anthropic, DeepSeek, Gemini or any OpenAI-compatible model from automations and scripts.</dd>
+      <dt>How</dt><dd>Per-instance conversation history (stored in a file), <b>structured JSON output</b>, and the full answer as a <b>response variable</b>, which gets around HA's 255-character state limit.</dd>
+      <dt>Trick</dt><dd>A morning briefing from forecast + sensor data, e.g. a sunscreen reminder when UV is high (an idea from the community thread; second-hand).</dd>
+      <dt>Catch</dt><dd>One more community integration to maintain; HA's built-in AI Tasks now covers part of this.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-y">Twin: yes</span><span class="tag v-maybe">Maybe (compare with AI Tasks)</span><span class="note">Video: "Every morning my house writes me a briefing."</span></div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="card">
+    <h3><span>4.11 Four ways to build a 3D digital twin</span><span class="tag t-ok">✓ verified</span></h3>
+    <table style="margin:3px 0 2px">
+      <tr><th style="width:22%">Card</th><th style="width:30%">How the model gets in</th><th style="width:18%">Rendering</th><th>Notable</th></tr>
+      <tr><td><b>floor3d-card</b> (adizanni)</td><td><b>Sweet Home 3D</b> → export <b>OBJ/MTL</b> → <code>/config/www</code></td><td>3D card bound to entity states</td><td>Pitfall: re-exporting after deleting objects <b>reassigns object IDs</b>, so the bindings must be redone. Hide objects instead of deleting them.</td></tr>
+      <tr><td><b>Floorplan 3D</b> (johnnyo21)</td><td>Sweet Home 3D (or other) → OBJ/MTL</td><td><b>Babylon.js</b></td><td>Lights render in real time from light entities.</td></tr>
+      <tr><td><b>HA 3D Floorplan</b> (hollako)</td><td><code>.glb</code> model; place markers in Edit Mode</td><td><b>Physically based lighting</b></td><td>Multiple floors; animated objects.</td></tr>
+      <tr><td><b>NeonPlan 3D</b> (Mastershort)</td><td><b>Draw the plan inside HA</b></td><td>Neon-style 3D</td><td>Multiple buildings; a "tablet quality" mode for old wall tablets; 100% local.</td></tr>
+    </table>
+    <div class="foot"><span class="tag tw-y">Twin: this is the twin's face</span><span class="tag v-must">Must-have for S2</span><span class="note">Video: "4 ways to build a 3D twin of your home, and which one I picked."</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span>4.12 Synthetic Home + HA datasets: testing AI on homes that don't exist</span><span class="tag t-ok">✓ verified</span></h3>
+    <div class="src">github.com/allenporter/home-assistant-synthetic-home · github.com/allenporter/home-assistant-datasets</div>
+    <dl>
+      <dt>What</dt><dd><b>Synthetic Home</b> builds a fake home in HA from a YAML file of <b>named devices in named areas</b> ("like HA's <code>demo</code> platform, but you name devices and put them in areas"). The <b>datasets</b> project uses synthetic homes to <b>evaluate AI models</b> as HA conversation agents: generate → load → run prompts against several models → score the results.</dd>
+      <dt>Trick</dt><dd><b>The home is just data</b>, so you can test AI against a home before it exists. That is exactly my situation.</dd>
+      <dt>Catch</dt><dd>A developer tool: YAML-first, no UI polish.</dd>
+    </dl>
+    <div class="foot"><span class="tag tw-y">Twin: the foundation</span><span class="tag v-must">Must-have for S2</span><span class="note">Video: "The tool HA developers use to test AI on homes that don't exist."</span></div>
+  </div>
+
+  <h3>Bonus cards for Season 4: the bench lab (no electrician needed)</h3>
+  <table>
+    <tr><th style="width:20%">Project</th><th>One-line breakdown</th><th style="width:28%">Why it fits</th></tr>
+    <tr><td><b>WLED</b><br><span class="note">github.com/wled-dev/WLED</span></td><td>Firmware for <b>ESP32</b> that drives addressable LEDs: 200+ effects, 2D matrices, an HA integration.</td><td>USB-powered strips; low voltage.</td></tr>
+    <tr><td><b>DIY mmWave presence</b><br><span class="note">LD2410 + ESP32 + ESPHome</span></td><td>Radar detects micro-movement (even breathing), so lights don't switch off while you sit still. A common pattern: <b>PIR switches on fast, mmWave keeps it on</b>.</td><td>The sensor connects to the ESP32 (UART) with jumper wires; USB power.</td></tr>
+    <tr><td><b>Frigate</b><br><span class="note">github.com/blakeblackshear/frigate</span></td><td>A local NVR with real-time object detection (OpenCV/TensorFlow) that talks to HA over MQTT. A GPU or AI accelerator is "highly recommended".</td><td>Software + a USB camera on the bench.</td></tr>
+    <tr><td><b>Music Assistant</b><br><span class="note">music-assistant.io</span></td><td>Open-source music library server that connects streaming services to many speakers.</td><td>Software; uses existing speakers.</td></tr>
+  </table>
+</section>
+
+<!-- ================= PAGE 9: TWIN ================= -->
+<section class="page">
+  <h2>5 · Season 2: the digital twin, "moving in before I have keys"</h2>
+  <div class="plain"><b>In plain words:</b> build my future flat in software, fill it with devices that don't exist yet, have a script play "a day of me", and write down every moment I wished the house did something. That list, not guesswork, decides what I buy and build in 2028.</div>
+  <svg viewBox="0 0 760 236" aria-label="Twin layers">
+    <defs><marker id="t1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b6470"/></marker></defs>
+    <g font-size="10.5">
+      <rect x="60" y="4" width="640" height="38" rx="8" fill="#fbf1df" stroke="#b7791f"/><text x="76" y="20" font-weight="700" fill="#b7791f">5 · Living journal</text><text x="76" y="34" font-size="9" fill="#5b6470">friction log → device wishlist → renovation questions → 2028 decisions</text>
+      <rect x="60" y="50" width="640" height="38" rx="8" fill="#e6f4ec" stroke="#1f8a4c"/><text x="76" y="66" font-weight="700" fill="#1f8a4c">4 · Life simulator</text><text x="76" y="80" font-size="9" fill="#5b6470">Python script plays a scripted day (wake 07:00, out 08:30…) via <tspan font-family="DejaVu Sans Mono">POST /api/states</tspan>: sets states, touches no real device</text>
+      <rect x="60" y="96" width="640" height="38" rx="8" fill="#efe9fc" stroke="#6a3fd1"/><text x="76" y="112" font-weight="700" fill="#6a3fd1">3 · 3D view</text><text x="76" y="126" font-size="9" fill="#5b6470">floor3d / Floorplan 3D / HA 3D Floorplan / NeonPlan card on a dashboard · an old tablet becomes the "wall panel"</text>
+      <rect x="60" y="142" width="640" height="38" rx="8" fill="#e2f3f4" stroke="#0f7c86"/><text x="76" y="158" font-weight="700" fill="#0f7c86">2 · Virtual devices</text><text x="76" y="172" font-size="9" fill="#5b6470">Synthetic Home (named devices in areas) + Virtual (17 platforms, incl. fake cameras with snapshot images) + HA demo</text>
+      <rect x="60" y="188" width="640" height="38" rx="8" fill="#fff" stroke="#1b1f24"/><text x="76" y="204" font-weight="700">1 · Floor plan</text><text x="76" y="218" font-size="9" fill="#5b6470">Sweet Home 3D model of the future flat (approximate layout if I don't have the developer's plan)</text>
+    </g>
+    <line x1="30" y1="222" x2="30" y2="14" stroke="#5b6470" stroke-width="1.6" marker-end="url(#t1)"/>
+    <text x="22" y="120" font-size="9" fill="#5b6470" transform="rotate(-90 22 120)" text-anchor="middle">build bottom-up</text>
+  </svg>
+  <table>
+    <tr><th style="width:18%">Layer</th><th>Done when…</th></tr>
+    <tr><td>1 Floor plan</td><td>Rooms, furniture and windows exported as OBJ (or GLB).</td></tr>
+    <tr><td>2 Virtual devices</td><td>Every imagined device appears in its room in HA.</td></tr>
+    <tr><td>3 3D view</td><td>Toggling a light in HA lights the room in 3D.</td></tr>
+    <tr><td>4 Life simulator</td><td>One simulated day runs end to end and the automations react.</td></tr>
+    <tr><td>5 Living journal</td><td>A ranked device wishlist and a list of renovation questions.</td></tr>
+  </table>
+  <p class="note"><b>Honest limitation:</b> HA uses the real clock. The script can replay a day quickly, but automations that trigger on a fixed time ("at 07:00") won't fire early. For time-lapse videos, build the twin's automations around <b>events</b> ("presence in the kitchen") rather than clock times, or run in real time and film a time-lapse.</p>
+
+  <div class="grid2">
+    <div>
+      <h3>Questions the twin should answer</h3>
+      <ol class="note" style="color:var(--ink)">
+        <li><b>TV, projector, or neither?</b> Do I use a living-room screen during simulated evenings?</li>
+        <li><b>How many speakers, and where?</b></li>
+        <li><b>Presence sensors:</b> which rooms keep "losing" me?</li>
+        <li><b>Wall panel:</b> which dashboard views do I actually open?</li>
+        <li><b>Guest mode:</b> what should a guest be able to ask or do?</li>
+        <li><b>Voice or automatic?</b> Which things should just happen?</li>
+        <li><b>Never automate:</b> locks, the oven, anything safety-related.</li>
+        <li><b>Renovation questions for a professional:</b> extra outlets, network points, ceiling mounts.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>Season 2 episode ideas</h3>
+      <ol class="note" style="color:var(--ink)">
+        <li>"I'm building my home before I have the keys"</li>
+        <li>"Turning a floor plan into a 3D model in an evening"</li>
+        <li>"Furnishing a home with 40 devices that don't exist"</li>
+        <li>"Day 1 living in a simulated home" (time-lapse)</li>
+        <li>"I let AI design the automations" (card 4.9)</li>
+        <li>"Do I even need a TV? What a month of simulated evenings said"</li>
+        <li>"Week 4 friction log: the five things I kept wishing for"</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAGE 10: S3 + PIPELINE ================= -->
+<section class="page">
+  <h2>6 · Where my own agent fits (Season 3)</h2>
+  <ul>
+    <li>The existing <b>Phase 1 agent plan</b> (<code>docs/phase1/</code>) becomes Season 3, with two changes (my suggestion): <b>run it on the twin</b> instead of bare demo devices, and <b>take its use cases from the friction log</b> instead of guesses.</li>
+    <li>Its safety ideas match what the dissected projects do: Fronkensteen's email rule, ZenOS's push-confirmation for locks, HGA's Critical Action PIN. That gives a strong episode: <i>"Three people built AI homes. All three locked down the same thing."</i></li>
+  </ul>
+
+  <h2>7 · Production pipeline (faceless)</h2>
+  <table>
+    <tr><th style="width:30%">Step</th><th>Tool (free unless noted)</th><th style="width:13%">Time</th></tr>
+    <tr><td>1 · Read the project's README/docs</td><td>Browser + my AI assistant with the card template (Markdown §11)</td><td>45–60 min</td></tr>
+    <tr><td>2 · Write the notebook card</td><td>This repo (<code>notebook/</code>), Markdown</td><td>30–45 min</td></tr>
+    <tr><td>3 · Draw the diagram</td><td>Excalidraw (open source) or Mermaid</td><td>20–30 min</td></tr>
+    <tr><td>4 · Write the 70-s script</td><td>~170–200 English words; for Chinese voiceover very roughly 250–320 characters (depends on speaking speed)</td><td>30 min</td></tr>
+    <tr><td>5 · Record screen + voice</td><td>macOS screen recording (Cmd+Shift+5); my own voice recommended</td><td>30 min</td></tr>
+    <tr><td>6 · Edit, caption, export vertical</td><td>DaVinci Resolve (free) or CapCut</td><td>45–60 min</td></tr>
+    <tr><td>7 · Publish + link the card</td><td>Platforms of my choice (§10)</td><td>15 min</td></tr>
+  </table>
+  <p class="note">The times are my estimates. If I ever use a synthetic voice, I'll say so; platforms have their own disclosure rules for AI-generated content, so check them before publishing.</p>
+
+  <h2>8 · Risks and how to handle them</h2>
+  <table>
+    <tr><th style="width:28%">Risk</th><th>Mitigation</th></tr>
+    <tr><td><b>"Deep" doesn't fit in 70 s</b></td><td>Video = one diagram + one trick; the notebook holds the depth. Link it every time.</td></tr>
+    <tr><td><b>Facts go stale fast</b></td><td>Date-stamp claims; re-check the README on filming day; keep a "corrections" note in the notebook.</td></tr>
+    <tr><td><b>Crediting and copyright</b></td><td>My own diagrams and reproductions; credit by name and link; ask before reusing media. Discuss the <i>architecture</i>, not copyrighted characters (e.g., Fronkensteen's personas).</td></tr>
+    <tr><td><b>Privacy of my future home</b></td><td>Never publish the real floor plan, unit number or address; use a modified layout for the public twin.</td></tr>
+    <tr><td><b>Hype and overclaiming</b></td><td>Verified / second-hand labels in the notebook; say "I haven't tested this" when true; give myth vs reality a regular slot.</td></tr>
+    <tr><td><b>Burnout</b> (two years is long)</td><td>1 episode a week; batch research on weekends; seasons as breaks.</td></tr>
+    <tr><td><b>Untested market assumption</b></td><td><b>30-minute check:</b> search "Home Assistant AI" and "智能家居 Home Assistant" on my target platforms, list the top 10 creators, and note whether they explain <i>how</i> or just <i>show</i>.</td></tr>
+    <tr><td><b>Community code risk</b></td><td>Try projects in the twin first; HA itself says Marketplace items aren't audited.</td></tr>
+  </table>
+</section>
+
+<!-- ================= PAGE 11: EP1 SCRIPT + DECISIONS ================= -->
+<section class="page">
+  <h2>9 · Episode 1 script draft (~60 s)</h2>
+  <div class="grid2">
+    <div class="script">
+      <p><b>English</b></p>
+      <p>In 2028, I get the keys to my home.</p>
+      <p>I'm a software engineer, and I don't want a "smart home" that just turns lights on from an app.</p>
+      <p>I want a <b>Local Tech Hub</b>: a home where I can try every interesting piece of technology I find.</p>
+      <p>The problem? I know software. I don't know sensors, wiring, radios or home automation.</p>
+      <p>So for the next two years I'm doing this in public.</p>
+      <p>First, I'll take apart what other people have built, explain how it really works, and keep notes in a public notebook.</p>
+      <p>Then I'll build a digital twin of my home, and live in it before it exists.</p>
+      <p>By the time I get my keys, I want to know exactly what I need, and why.</p>
+      <p>This is Local Tech Hub. Episode 1.</p>
+    </div>
+    <div class="script zh">
+      <p><b>中文</b></p>
+      <p>2028 年，我会拿到我家的钥匙。</p>
+      <p>我是一名软件工程师，我想要的不只是用 App 开关灯的"智能家居"。</p>
+      <p>我想把家变成一个 <b>Local Tech Hub</b>：一个可以实验各种有趣技术的地方。</p>
+      <p>问题是：我懂软件，但传感器、布线、无线协议、家庭自动化，我都还不懂。</p>
+      <p>所以接下来两年，我会公开记录整个过程。</p>
+      <p>第一步，拆解别人做过的有趣项目，讲清楚它到底怎么实现，然后记进我的公开笔记本。</p>
+      <p>第二步，为我的家建一个数字孪生，在它真正存在之前，先"住"进去。</p>
+      <p>等我拿到钥匙的时候，我希望清楚地知道：我需要什么，为什么需要。</p>
+      <p>这里是 Local Tech Hub。第一集。</p>
+    </div>
+  </div>
+  <p><b>Episode 2 suggestion:</b> <b>4.1 Fronkensteen</b> for the strongest hook, then <b>4.3 Guest assistant</b> as Episode 3 (simple, relatable, and easy to reproduce later in the twin).</p>
+
+  <h2>10 · Decisions for me</h2>
+  <table>
+    <tr><td style="width:4%">1</td><td><b>Video language:</b> Mandarin, English, or Mandarin voice + English subtitles? This decides the platforms.</td></tr>
+    <tr><td>2</td><td><b>Platforms:</b> which one or two to start on?</td></tr>
+    <tr><td>3</td><td><b>Voice:</b> my own (recommended) or a disclosed AI voice?</td></tr>
+    <tr><td>4</td><td><b>Floor plan:</b> do I have the developer's plan for the 2028 home?</td></tr>
+    <tr><td>5</td><td><b>Phase 1 agent plan dates:</b> keep 21 Nov / 5 Dec / 19 Dec 2026, or move the agent to Season 3 (2027) and spend Nov–Dec on S0 + S1 + starting the twin?</td></tr>
+    <tr><td>6</td><td><b>Cadence:</b> is 1 episode a week realistic?</td></tr>
+  </table>
+
+  <h2>11 · Notebook card template (also in the Markdown, for my AI assistant)</h2>
+<pre># &lt;Project name&gt;
+- Source · Creator · Checked: YYYY-MM-DD   (labels: verified / second-hand / my view)
+## What it does (1 sentence)
+## How it works (3–6 bullets: components + data flow)
+## Diagram (Mermaid, ≤ 6 boxes)
+## The clever trick (1 idea worth stealing)
+## The catch (cost · hardware · maturity · privacy · install-type requirements)
+## Try in my twin? (yes / partly / no + how)
+## Verdict for my home: Must-have / Maybe / Just cool, because …
+## Video: hook line · 70-s beat sheet · credits</pre>
+
+  <h3>Sources (checked 11 Nov 2026)</h3>
+  <p class="note">github.com/mmadalone/Project_Fronkensteen · github.com/nathan-curtis/zenos-ai · r/homeassistant "Using LLMs to make a guest assistant" (Jan 2025) · github.com/goruck/home-generative-agent · github.com/valentinfrlch/ha-llmvision · github.com/wgumaa/Lookout · home-assistant.io blog: AI-powered local smart home (Sep 2025), 2025.7 and 2026.11 release notes · developers.home-assistant.io REST API · github.com/ITSpecialist111/ai_automation_suggester · github.com/smkrv/ha-text-ai · github.com/adizanni/floor3d-card · github.com/johnnyo21/floorplan_3d · github.com/hollako/home-assistant-3d-floorplan · github.com/Mastershort/neonplan3d · github.com/allenporter/home-assistant-synthetic-home · github.com/allenporter/home-assistant-datasets · github.com/twrecked/hass-virtual · github.com/wled-dev/WLED · github.com/blakeblackshear/frigate · music-assistant.io · atomic14.com presence-sensor guide</p>
+</section>
+
+</body>
+</html>
